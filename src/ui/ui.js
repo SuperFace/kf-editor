@@ -246,7 +246,10 @@ define( function ( require ) {
     function formulaLineFeed(doc){
         var container = doc.createElement( "div" );
         container.className = "kf-editor-linefeed";
-        container.innerHTML = '<div class="select-display-box"><span class="select select-inline selected" data-select="inline-block">行内显示</span><span class="select-split">or</span><span class="select select-diaplay" data-select="block">块级显示</span></div>';
+        container.innerHTML = '<div class="select-display-box">'
+                            +'<span class="select select-inline selected" data-select="inline-block">行内显示</span>'
+                            +'<span class="select-split">or</span><span class="select select-diaplay" data-select="block">块级显示</span>'
+                            +'</div>';
         return container;
     }
 
