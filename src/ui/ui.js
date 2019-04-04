@@ -45,12 +45,14 @@ define( function ( require ) {
                 this.toolbarContainer = createToolbarContainer( currentDocument );
                 this.editArea = createEditArea( currentDocument );
                 this.canvasContainer = createCanvasContainer( currentDocument );
+                this.linefeedContainer = formulaLineFeed(currentDocument);
                 this.scrollbarContainer = createScrollbarContainer( currentDocument );
 
                 this.toolbarWrap.appendChild( this.toolbarContainer );
                 this.container.appendChild( this.toolbarWrap );
                 this.editArea.appendChild( this.canvasContainer );
                 this.container.appendChild( this.editArea );
+                this.container.appendChild( this.linefeedContainer );
                 this.container.appendChild( this.scrollbarContainer );
 
                 this.initComponents();
@@ -89,7 +91,7 @@ define( function ( require ) {
                     toolbarBox = toolbar.getBoundingClientRect();
 
                 editArea.style.width = containerBox.width + "px";
-                editArea.style.height = containerBox.bottom - toolbarBox.bottom + "px";
+                editArea.style.height = containerBox.bottom - toolbarBox.bottom - 60 + "px";
 
             },
 
@@ -237,6 +239,14 @@ define( function ( require ) {
     function createScrollbarContainer ( doc ) {
         var container = doc.createElement( "div" );
         container.className = "kf-editor-edit-scrollbar";
+        return container;
+    }
+
+    //自定义
+    function formulaLineFeed(doc){
+        var container = doc.createElement( "div" );
+        container.className = "kf-editor-linefeed";
+        container.innerHTML = '<div class="select-display-box"><span class="select select-inline selected" data-select="inline-block">行内显示</span><span class="select-split">or</span><span class="select select-diaplay" data-select="block">块级显示</span></div>';
         return container;
     }
 
